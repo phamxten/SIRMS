@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
     // Idealnya cek dari database, ini contoh hardcode dulu
-    if ($username === 'admin' && $password === '1234') {
+    if ($username === 'admin' && $password === '12345') {
         $_SESSION['user'] = $username; // Simpan session
         header('Location: dashboard.php'); // Redirect ke dashboard
         exit();
@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             height: 400px;
             margin: 100px auto;
             background-color: white;
+            position: relative;
         }
         input{
             font: 18px/30px arial,san-serif ;
@@ -51,19 +52,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             width: 200px;
             height: 50px;
             align-self: center;
-            display: block;
-            margin: 0 auto;
+            position: absolute;
+            bottom: 20px;
+            left: 150px;
         }
     </style>
 </head>
 <body>
-    <form action="login" method="post">
+    <form action="login.php" method="post">
         <div class="container">
             <h1 id="login">Login</h1>
             <h2>Username</h2>
             <input type="text" name="username" placeholder="Username">
             <h2>Password</h2>
-            <input type="password" name="password" id="password" placeholder="Password">
+            <input type="password" name="password" placeholder="Password">
+            <?php if (!empty($error)) echo "<p style='color:red'>$error</p>"; ?>
             <br>
             <br>
             <button>login</button>
