@@ -1,3 +1,6 @@
+<?php
+include 'auth.php'; // Proteksi halaman: wajib login
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,7 +101,7 @@
 }
 
 .footer .copy p{
-    font-size: 12px;
+    font-size: 15px;
     font-weight: bold;
     color: #fff;
     text-align: center;
@@ -111,16 +114,21 @@
         <a href="http://twitter.com/" target="_blank" class="twitter">My Twitter</a>
         <div class="header">
             <h2>SIRMS</h2>
+            <hr>
             <a href="pasien.php">Pasien</a>
             <a href="dokter.php">Dokter</a>
             <a href="obat.php">Obat</a>
-            <a href="login.php" id="login">Login</a>
+            <a href="pemeriksaan.php">Pemeriksaan</a>
+            <span style="color:#555; font-size:14px; margin-right:10px;">
+                👤 <?= htmlspecialchars($_SESSION['nama_dokter'] ?? 'Dokter'); ?>
+            </span>
+            <a href="logout.php" id="login">Logout</a>
         </div>
         <div class="hero"></div>
 
         <div class="footer">
             <div class="copy">
-                <p>Copyright 2027. phamx. all rights reserved</p>
+                <p>Copyright 2026. phamx. all rights reserved</p>
             </div>
         </div>
 
